@@ -15,11 +15,11 @@
 </head>
 
 <body>
-
+{% load static %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">   
-            <span> <img src="photo.ico" alt="" height="20" width="20" srcset=""></span> 
-            <a class="navbar-brand" href="#">MyTube</a>
+            <img src="{% static 'Mytube-icon.webp' %}" onclick="document.location='/'" alt="" height="50" width="60" srcset="">
+            <a class="navbar-brand mx-2" href="#">MyTube</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
