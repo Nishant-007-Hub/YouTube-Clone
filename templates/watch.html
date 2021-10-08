@@ -1,0 +1,40 @@
+{% extends 'basic.html' %}
+{% block title %} <title>watch</title> {% endblock title %}
+{% block body %}
+
+<body>
+    {% comment %} {% for i in watch_video %} {% endcomment %}
+    <div class="container" style="height: 1000px; width:100%; background-color: rgb(155, 80, 80);">
+        <div class="container my-3 mx-5 col-md-9"
+            style="float: left; height: 470px; width: 800px; background-color: black; position: absolute;">
+            <video height="470px" width="800px" controls autoplay>
+                <source src='/media/{{watch_video.videos}}' type="video/mp4">
+                Something went wrong
+            </video>
+            <p style="color: white;">{{watch_video.title}}</p>
+            <img style="width: 60px; height: 50px;" src='/media/{{watch_video.thumbnail}}' alt="no img">
+            {% comment %} {% endfor %} {% endcomment %}
+        </div>
+
+        <div class="container my-3 mx-2 col" style="float: right; height: 900px; width:220px; background-color: rgb(190, 139, 139);">
+            {% for i in allvideo %}
+            <div class="card" style="width:100px; height:100px;">
+                <a href="{{i.video_id}}">
+                    <img style="width: 220px;" src='/media/{{i.thumbnail}}' class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="row">{{i.title}}</p>
+                        <img src='/media/{{i.channel_logo}}' style="height: 40px; width: 40px;" class="card-img-top"
+                            alt="...">
+                </a>
+                <p class="card-text row">Channel name</p>
+                <a href="#" class="btn btn-primary">views</a>
+                {{i.video_id}}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+
+</body>
+
+{% endblock body %}

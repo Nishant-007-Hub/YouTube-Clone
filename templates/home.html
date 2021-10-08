@@ -1,46 +1,26 @@
-<!doctype html>
-<html lang="en">
+{% extends 'basic.html' %}
+{% block title %}
+<title>Home</title>
+{% endblock title %}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="style.css"> -->
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-</head>
-
+{% block body %}
 <body>
-{% load static %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">   
-            <img src="{% static 'Mytube-icon.webp' %}" onclick="document.location='/'" alt="" height="50" width="60" srcset="">
-            <a class="navbar-brand mx-2" href="#">MyTube</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex mx-auto" id="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button  class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-    <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+
+<div class="row md-1">
+{% for i in objs  %}
+    <div class="card" style="width: 13rem; background-color: rgb(209, 161, 161);">
+    <a href="watch/{{i.video_id}}">
+        <img style="height: 150px; width: 230px;" src='/media/{{i.thumbnail}}' class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">{{i.title}}</h5>
+        <img src='/media/{{i.channel_logo}}' style="height: 30px; width: 35px;" class="card-img-top" alt="..."> </a>
+            <p style="color: white;" class="card-text">Channel name</p>
+            <a href="#" class="btn btn-primary">views</a>
+            id={{i.video_id}}
         </div>
+    </div>
+    {% endfor %}
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -55,5 +35,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
 </body>
+{% endblock body %}
 
 </html>

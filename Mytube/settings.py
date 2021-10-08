@@ -120,8 +120,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# below 2 lines are for media directory when u upload any media database u can see that media direct from database 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# below code is for static files when u load static in templates u need this code before that action
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]

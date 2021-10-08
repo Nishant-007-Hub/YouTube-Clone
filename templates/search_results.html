@@ -1,0 +1,27 @@
+{% extends 'basic.html' %}
+{% block title %} <title> {{query}} </title> {% endblock title %}
+
+{% block body %}
+<body>
+{% if allresults|length == 0 %}
+<h4>Your search query "{{query}}"" does not match any document try with diferent words</h4>
+{% else %}
+{% for i in allresults  %}
+<div class="card" style="width: 18rem;">
+                <a href="watch/{{i.video_id}}">
+                    <img src='/media/{{i.thumbnail}}' class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="row">{{i.title}}</p>
+                        <img src='/media/{{i.channel_logo}}' style="height: 40px; width: 40px;" class="card-img-top"
+                            alt="...">
+                </a>
+                <p class="card-text row">Channel name</p>
+                <a href="#" class="btn btn-primary">views</a>
+                {{i.video_id}}
+            </div>
+{% endfor %}
+{% endif %}
+{% comment %} {% endif %} {% endcomment %}
+</body>
+
+{% endblock body %}
