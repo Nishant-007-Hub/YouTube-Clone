@@ -9,15 +9,15 @@
 
 <div class="row md-1">
 {% for i in objs  %}
-    <div class="card" style="width: 13rem; background-color: rgb(209, 161, 161);">
+    <div class="card mt-2" style="width: 13rem; background-color: rgb(209, 161, 161);">
     <a href="watch/{{i.video_id}}">
         <img style="height: 150px; width: 230px;" src='/media/{{i.thumbnail}}' class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{i.title}}</h5>
-        <img src='/media/{{i.channel_logo}}' style="height: 30px; width: 35px;" class="card-img-top" alt="..."> </a>
+        <img src='/media/{{i.channel_logo}}' style="height: 40px; width: 45px; border-radius: 30px;" class="card-img-top" alt="..."> </a>
             <p style="color: white;" class="card-text">Channel name</p>
-            <a href="#" class="btn btn-primary">views</a>
-            id={{i.video_id}}
+            id={{i.video_id}}<br>
+            views {{i.views}}
         </div>
     </div>
     {% endfor %}

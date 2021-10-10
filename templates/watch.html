@@ -4,10 +4,10 @@
 
 <body>
     {% comment %} {% for i in watch_video %} {% endcomment %}
-    <div class="container" style="height: 1000px; width:100%; background-color: rgb(155, 80, 80);">
-        <div class="container my-3 mx-5 col-md-9"
-            style="float: left; height: 470px; width: 800px; background-color: black; position: absolute;">
-            <video height="470px" width="800px" controls autoplay>
+    <div class="container" style="height: 1000px; width:1600px; background-color:black;">
+        <div class="container my-3 mx-5"
+            style="float: left; height: 600px; width:860px; background-color: rgb(158, 42, 42); position: absolute;">
+            <video height="600" width="900" controls autoplay>
                 <source src='/media/{{watch_video.videos}}' type="video/mp4">
                 Something went wrong
             </video>
@@ -16,7 +16,7 @@
             {% comment %} {% endfor %} {% endcomment %}
         </div>
 
-        <div class="container my-3 mx-2 col" style="float: right; height: 900px; width:220px; background-color: rgb(190, 139, 139);">
+        <div class="container my-3 mx-2 col" style="float: right; height: 900px; width:250px; background-color: rgb(190, 139, 139);">
             {% for i in allvideo %}
             <div class="card" style="width:100px; height:100px;">
                 <a href="{{i.video_id}}">
@@ -27,8 +27,7 @@
                             alt="...">
                 </a>
                 <p class="card-text row">Channel name</p>
-                <a href="#" class="btn btn-primary">views</a>
-                {{i.video_id}}
+                {{i.views}}
             </div>
             {% endfor %}
         </div>

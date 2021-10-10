@@ -28,15 +28,149 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form action="/search" method="GET" class="d-flex mx-auto" id="search">
-                    <input id="query" name="query" style="width: 15cm;" class="form-control" type="search"
+                    <input id="query" name="query" style="width: 13cm;" class="form-control" type="search"
                         placeholder="Search" aria-label="Search">
 
                     <button class="btn btn-outline-success mx-2" type="submit">Search</button>
                 </form>
             </div>
+            {% if user.is_authenticated %}
+
+            <span style="color: whitesmoke; margin-right: 0.5cm;">
+                Welcome!! {{request.user}}
+            </span>
+
+            <!-- Logout button -->
+            <button class="btn btn-outline-light" data-target="" id="mylogout" name="mylogout"
+                onclick="document.location = '/Logout';" title="Logout" type="button">Logout
+            </button>
+
+            {% else %}
+            <!-- SIGN IN Button -->
+            <button data-bs-toggle="modal" data-bs-target="#LoginModal" title="Login" id="signin" type="button"
+                class="btn btn-outline-primary btn-sm mx-1">SIGN IN</button>
+
+
+            <!-- SIGN UP Button -->
+            <button data-bs-toggle="modal" data-bs-target="#SignUpModal" title="signup" id="signup" type="button"
+                class="btn btn-outline-primary btn-sm">SIGN UP</button>
+
+            {% endif %}
+
+            <!-- Sign Up Modal -->
+            <div aria-hidden="true" aria-labelledby="SignUpModal" class="modal fade" id="SignUpModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="SignUpModalTitle">Create Account</h5>
+                            <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                                <!-- <span aria-hidden="true">&times;</span> -->
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form action="/signup" method="POST">{% csrf_token %}
+                                <div class="form-group">
+                                    <label for="username">Your name</label>
+                                    <input class="form-control" id="username" name="username"
+                                        placeholder="Enter Your Name" required type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fname">First name</label>
+                                    <input class="form-control" id="fname" name="fname"
+                                        placeholder="Enter Your First name" required type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lname">Last name</label>
+                                    <input class="form-control" id="lname" name="lname"
+                                        placeholder="Enter Your last name" required type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="Email">Email address</label>
+                                    <input aria-describedby="emailHelp" class="form-control" id="email1" name="email"
+                                        placeholder="Enter Email" required type="email">
+                                    <small class="form-text text-muted" id="help">We'll never share your email with
+                                        anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input autocomplete="off" class="form-control" id="password" name="password"
+                                        placeholder="Passwords must be at least 6 characters" required type="password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="repassword">Confirm Password</label>
+                                    <input autocomplete="off" class="form-control" id="repassword" name="repassword"
+                                        placeholder="Confirm Password" required type="password">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit">Sign Up </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+
+
+
+
+
+
+        <!-- Sign In Modal -->
+        <div aria-hidden="true" aria-labelledby="LoginModal" class="modal fade" id="LoginModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="LoginModalTitle">User Login</h5>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                            <!-- <span aria-hidden="true">&times;</span> -->
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form action="/signin" method="POST">{% csrf_token %}
+                            <div class="form-group">
+                                <label for="email">Username or Email address</label>
+                                <input aria-describedby="emailHelp" autocomplete="off" class="form-control"
+                                    id="loginusername" name="loginusername" type="text">
+                                <small class="form-text text-muted" id="EmailHelp">We'll never share your email with
+                                    anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input autocomplete="off" class="form-control" id="loginpass" name="loginpass"
+                                    type="password">
+                            </div>
+                            <div class="form-group form-check">
+                                <input class="form-check-input" id="exampleCheck1" type="checkbox">
+                                <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                            </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">Sign In</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong> Message: </strong> {{message}}
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button">
+            {% comment %} <span aria-hidden="true">&times;</span> {% endcomment %}
+        </button>
+    </div>
+    {% endfor %}
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
