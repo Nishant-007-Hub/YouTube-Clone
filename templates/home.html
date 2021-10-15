@@ -5,23 +5,63 @@
 
 
 {% block body %}
-<body>
+{% load humanize %}
 
-<div class="row md-1">
-{% for i in objs %}
-    <div class="card mt-2" style="width: 13rem; background-color: rgb(209, 161, 161);">
-    <a href="watch/{{i.video_id}}">
-        <img style="height: 150px; width: 230px;" src='/media/{{i.thumbnail}}' class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{i.title}}</h5>
-        <img src='/media/{{i.channel_logo}}' style="height: 40px; width: 45px; border-radius: 30px;" class="card-img-top" alt="..."> <span> {{i.channel_name}} </span>  </a>
-           <br>
-        id={{i.video_id}}<br>
+<body>
+    <div class="row md-1">
+        {% for i in objs %}
+        <div style="height: 300px;width: 300px;" class="container">
+            <a style="text-decoration: none;" href="watch/{{i.video_id}}">
+                <img style="margin-left: -15px; height: 180px ; width: 320px;" src='/media/{{i.thumbnail}}'
+                    class="card-img-top" alt="...">
+                <dic class="row my-2">
+                    <div class="col-2" style="margin-left: -15px;">
+                        <img style="border-radius: 25px; height: 50px ; width: 50px;" src='/media/{{i.channel_logo}}'
+                            class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-10 ml-4" style="margin-left: 10px;">
+                        <span style="max-width: 5cm; color: white; overflow: hidden; text-overflow: ellipsis;"
+                        label="abcdd" title="abcdefg">{{i.title|truncatechars:35}}</span><br>
+                        <span
+                        style="color:gray; overflow: hidden; text-overflow: ellipsis;">{{i.channel_name}}</span><br>
+                        <span style="font-size: 18px;color:grey; overflow: hidden; text-overflow: ellipsis;">{{i.views}}
+                            views-
+                            {{i.posted|naturaltime}}</span>
+                        </div>
+                    </a>
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    {% comment %} <div class="row md-1">
+        {% for i in objs %}
+        <div class="card mt-2" style="width: 13rem; background-color: rgb(209, 161, 161);">
+            <a href="watch/{{i.video_id}}">
+                <img style="height: 150px; width: 230px;" src='/media/{{i.thumbnail}}' class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.title}}</h5>
+                    <img src='/media/{{i.channel_logo}}' style="height: 40px; width: 45px; border-radius: 30px;"
+                        class="card-img-top" alt="..."> <span> {{i.channel_name}} </span>
+            </a>
+            <br>
+            id={{i.video_id}}<br>
             views {{i.views}}
         </div>
     </div>
     {% endfor %}
-    </div>
+    </div> {% endcomment %}
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

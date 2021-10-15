@@ -22,7 +22,9 @@ def watch(request, myid):
     watch_video.views += 1
     watch_video.save()
     allvideo = showVideos.objects.exclude(video_id = myid)
-    return render(request, "watch.html", {"watch_video":watch_video, "allvideo":allvideo, "comments":comments, "allcomments":allcomments})
+    allvideo_list = list(allvideo)
+    shuffle(allvideo_list)
+    return render(request, "watch.html", {"watch_video":watch_video, "allvideo":allvideo_list, "comments":comments, "allcomments":allcomments})
 
 def search(request):
     print("lop")
