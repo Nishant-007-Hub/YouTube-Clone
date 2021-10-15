@@ -10,14 +10,67 @@
         <!-- <div class="container my-2"
             style="float: left; height: 600px; width:860px; background-color: rgb(158, 42, 42); position: absolute;"> -->
         <div class="row">
-            <video style="margin-left: 1cm;" class="col-9" height="600" width="700" controls autoplay>
+            <video style="margin-left: 1cm;width: 30cm;" class="col-8" height="600" width="700" controls autoplay>
                 <source src='/media/{{watch_video.videos}}' type="video/mp4">
                 Something went wrong
             </video>
-            <div class="col-3 my-4"
-                style="float: right; height: 900px; width:250px; background-color: rgb(190, 139, 139);">
+
+
+
+
+
+
+
+
+            
+            <div style="width: 14cm;" class="col-2 my-4"
+                style="float: right; height: 900px; width:350px; background-color: rgb(95, 53, 53);">
                 {% for i in allvideo %}
-                <div class="card" style="width:100px; height:100px;">
+
+                <div style="width: 300px;" class="container my-1">
+                    <a href="{{i.video_id}}">
+                    <div class="row" style="background-color: white;">
+                        
+                        <div class="col-3" style="background-color:black;">
+                            <img style="margin-left: -148px; height: 140px ; width: 200px;" src='/media/{{i.thumbnail}}'
+                            alt="...">
+                        </div>
+                        <div class="col" style="background-color: rgb(12, 12, 11);">
+                            <span
+                                style="max-width: 5cm; color:white; overflow: hidden; text-overflow: ellipsis;"
+                                label="abcdd" title="abcdefg">{{i.title|truncatechars:30}}</span><br>
+                            <span
+                                style="color:rgb(107, 97, 97); overflow: hidden; text-overflow: ellipsis;">{{i.channel_name}}</span><br>
+                            <span
+                                style="color:rgb(131, 116, 116); overflow: hidden; text-overflow: ellipsis;">{{i.views}} views - {{i.posted}}</span>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {% comment %} <div class="card" style="width:100px; height:100px;">
                     <a href="{{i.video_id}}">
                         <img style="width: 220px;" src='/media/{{i.thumbnail}}' class="card-img-top" alt="...">
                         <div class="card-body">
@@ -27,17 +80,18 @@
                     </a>
                     <p class="card-text row">Channel name</p>
                     {{i.views}}
-                </div>
+                </div> {% endcomment %}
                 {% endfor %}
             </div>
         </div>
         <div class="container"
-            style="margin-top: 100px;background-color: rgb(5, 5, 5);width: 1250px; margin-left: -33.8cm;">
+            style="margin-top: 20px;background-color: rgb(14, 1, 1);width: 1100px; margin-left: 1cm;">
             <p style="color: white;">{{watch_video.title}}</p>
             <div class="row" style="color: white;">
                 <div class="col"> views {{watch_video.views}} - {{watch_video.posted}}</div>
                 <div class="col-4"> </div>
                 <div class="col"> likes-dislike-share-save</div>
+                <br>
                 <hr>
                 <br>
                 <div class="row">
@@ -59,14 +113,15 @@
                 <br>
                 <div class="row">
                     <span class="col">{{comments|length}} Comments</span>
-                     <span class="col"> sort by</span>
+                    <span class="col"> sort by</span>
                     <br>
                     <br>
                 </div>
                 <form action="/postComment" method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <input style="background-color: black; color: white; border: none;" type="text" class="form-control" name="commentdes" placeholder="Add a public comment...">
+                        <input style="background-color: black; color: white; border: none;" type="text"
+                            class="form-control" name="commentdes" placeholder="Add a public comment...">
                         <hr>
                         <input type="hidden" name="parentvideo_id" value="{{watch_video.video_id}}">
                     </div>
