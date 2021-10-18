@@ -1,7 +1,9 @@
+from django.core import validators
 from django.db import models
 from django.db.models.fields import DateTimeField
 from django.contrib.auth.models import User
 from django.utils.timezone import now
+from django.core.validators import MinLengthValidator
 
 
 class showVideos(models.Model):
@@ -12,6 +14,8 @@ class showVideos(models.Model):
     description = models.TextField(null=True, blank=True)
     subscribers = models.IntegerField(default=0) 
     channel_name = models.CharField(max_length=50, default="")
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
     channel_logo = models.ImageField(upload_to="Channel_logo", default="")
     views = models.IntegerField(default=0)
     posted = models.DateTimeField()

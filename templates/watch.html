@@ -22,7 +22,7 @@
 
 
 
-
+            <input type="hidden" name="videoid" value="{{watch_video.video_id}}">
             <div style="width: 14cm;" class="col-2 my-4"
                 style="float: right; height: 900px; width:350px; background-color: rgb(95, 53, 53);">
                 {% for i in allvideo %}
@@ -88,21 +88,41 @@
             <p style="color: white;">{{watch_video.title}}</p>
             <div class="row" style="color: white;">
                 <div class="col"> views {{watch_video.views}} - {{watch_video.posted}}</div>
-                <div class="col-4"> </div>
-                <div class="col"> likes-dislike-share-save</div>
+                <div class="col-3"> </div>
+                <div class="col mb-2">
+                    <!-- <iframe name="hiddenFrame" type="hidden"></iframe> -->
+                    <form style="display: inline-block;" action="#" method="POST" id="likevalform" name="likevalform"> {% csrf_token %}
+                        <input id="likeval" name="likeval" type="hidden" value='{{watch_video.likes}}'>
+                        <button type="submit" id="like" class="btn btn-secondary btn-sm">Like {{watch_video.likes}}</button>
+                    <!-- </form> -->
+                    <!-- <form style="display: inline-block;" action="#" method="POST" id="dislikevalform" name="dislikevalform"> {% csrf_token %} -->
+                        <button type="submit" id="dislikeval" name="dislikeval" class="btn btn-secondary btn-sm">dislike {{watch_video.dislikes}}</button>
+                            </form>
+                        <button type="submit" id="fav" class="btn btn-secondary btn-sm">Add to Favourite</button>
+                </div>
                 <br>
                 <hr>
                 <br>
-                <div class="row">
-                    <img class="col-1" style="width: 80px; height: 50px;" src='/media/{{watch_video.thumbnail}}'
-                        alt="no img">
-                    <div class="col-8">
+                <!-- <div class="row" style="background-color: blue;"> -->
+                <img class=" my-3" style="border-radius: 50%; height: 70px ; width: 100px;"
+                    src='/media/{{watch_video.thumbnail}}' alt="no img">
+                <form style="display: contents;" action="#" id="subscribers">
+                    <span id="span" style="margin-top: 25px;height: 70px;width: auto;">
                         {{watch_video.channel_name}}
                         <br>
-                        subscribers count
-                    </div>
-                    <button type="button" class="btn-primary btn-sm col-2">SUBSCRIBE</button>
-                </div>
+                        {{watch_video.subscribers}} <h6 style="font-size:smaller;display: inline-block; "> subscribers
+                        </h6>
+                    </span>
+                </form>
+                <!-- </div> -->
+
+                <form style="display: contents;" action="#" id="subscribebtn" method="POST"> {% csrf_token %}
+                    <button id="subscribebtn" name="subscribebtn"
+                        style="background-color: rgb(184, 28, 74);height: 40px; width: auto; margin-top: 40px;margin-left: 14cm;"
+                        type="submit" class="btn btn-secondary btn-sm">SUBSCRIBE</button>
+                </form>
+
+                <br>
                 <br>
                 <br>
                 <br>
@@ -241,3 +261,75 @@
 </body>
 
 {% endblock body %}
+
+{% block js %}
+<script>
+    let like = document.getElementById("like")
+    let dislike = document.getElementById("dislike")
+    let fav = document.getElementById("fav")
+    let subscribebtn = document.getElementById("subscribebtn")
+
+    // like.addEventListener("click", (element) => {
+    //     if (like.innerText == "Like") {
+    //         // like.innerText="Liked"
+    //         like.classList.remove("btn-secondary")
+    //         like.classList.add("btn-primary")
+
+    //     }
+    //     else {
+    //         like.innerText="Like"
+    //         like.classList.remove("btn-primary")
+    //         like.classList.add("btn-secondary")
+
+    //     }
+    // });
+
+    fav.addEventListener("click", (element) => {
+        if (fav.innerText == "Add to Favourite") {
+            fav.innerText = "Added to Favourite"
+            fav.classList.remove("btn-secondary")
+            fav.classList.add("btn-primary")
+
+        } else {
+            fav.innerText = "Add to Favourite"
+            fav.classList.remove("btn-primary")
+            fav.classList.add("btn-secondary")
+
+        }
+    });
+
+    // subscribebtn.addEventListener("click", () => {
+    //     if (subscribebtn.innerHTML == "SUBSCRIBE") {
+    //         subscribebtn.innerHTML = "SUBSCRIBED"
+    //         subscribebtn.style.backgroundColor = "grey"
+    //     } else {
+    //         subscribebtn.innerHTML = "SUBSCRIBE"
+    //         subscribebtn.style.backgroundColor = "rgb(184, 28, 74)"
+    //     }
+    // });
+
+    // $('#likevalform').submit(function (event) {
+    //     var formdata = {
+    //         'likeval' : $('input[name=likeval]').val(),
+    //         'csrfmiddlewaretoken' : $('input[name=csrfmiddlewaretoken]').val()
+    //         }
+    //     $.ajax({
+    //         type:"POST",
+    //         url:`/watch/${window.location.href.slice(-1)}/`,
+    //         data:formdata,
+    //         encode:true
+
+    //     });
+
+    //     .done(function(data){
+    //         console.log(data)
+    //     });
+         
+    //     event.preventDefault();
+       
+    // });
+
+
+
+</script>
+{% endblock js %}

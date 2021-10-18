@@ -16,6 +16,29 @@ def home(request):
 
 def watch(request, myid):
     watch_video = showVideos.objects.get(video_id=myid)
+    print("ko")
+    if request.method == "POST" and "dislikeval" in request.POST:
+        watch_video.dislikes += 1
+    if request.method == "POST" and "likeval" in request.POST:
+        watch_video.likes += 1
+    if request.method == "POST" and "subscribebtn" in request.POST:
+        watch_video.subscribers += 1
+        # likeval = request.POST.get("likeval")
+        # print("2ko")
+        # print(likeval, "likeval")
+        # subscribe = request.POST.get("subscribebtn")
+        # print(subscribe, "sub")
+        # # watch_video = showVideos.objects.get(video_id=myid)
+        # if likeval == "0":
+        #     watch_video.likes += 1
+        # else:
+        #     watch_video.likes -= 1
+        # # watch_video.subscribers += 1
+        # watch_video.save()
+    # if request.method == "POST":
+    #     subscribe = request.POST.get("subscribe")
+    #     print(subscribe, "sub")
+
     comments = Comment.objects.filter(parent_video=watch_video)
     # print(watch_video.views, "views")
     allcomments = Comment.objects.all()
@@ -25,6 +48,12 @@ def watch(request, myid):
     allvideo_list = list(allvideo)
     shuffle(allvideo_list)
     return render(request, "watch.html", {"watch_video":watch_video, "allvideo":allvideo_list, "comments":comments, "allcomments":allcomments})
+
+
+def subscribe(request):
+    videoid = request.GET.get("videoid")
+    print(videoid, "videoid")
+    watch_video = showVideos.objects.get(video_id=videoid)
 
 def search(request):
     print("lop")

@@ -7,18 +7,18 @@
 {% block body %}
 {% load humanize %}
 
-<body>
+<body>    
     <div class="row md-1">
         {% for i in objs %}
-        <div style="height: 300px;width: 300px;" class="container">
+        <div style="height: 300px;width: 300px;" class="container my-2">
             <a style="text-decoration: none;" href="watch/{{i.video_id}}">
-                <img style="margin-left: -15px; height: 180px ; width: 320px;" src='/media/{{i.thumbnail}}'
+                <img style="margin-left: -15px; height: 160px ; width: 300px;" src='/media/{{i.thumbnail}}'
                     class="card-img-top" alt="...">
-                <dic class="row my-2">
+                    <dic class="row my-2">
                     <div class="col-2" style="margin-left: -15px;">
                         <img style="border-radius: 25px; height: 50px ; width: 50px;" src='/media/{{i.channel_logo}}'
                             class="card-img-top" alt="...">
-                    </div>
+                        </div>
                     <div class="col-10 ml-4" style="margin-left: 10px;">
                         <span style="max-width: 5cm; color: white; overflow: hidden; text-overflow: ellipsis;"
                         label="abcdd" title="abcdefg">{{i.title|truncatechars:35}}</span><br>
@@ -29,22 +29,22 @@
                             {{i.posted|naturaltime}}</span>
                         </div>
                     </a>
-        </div>
+                </div>
 
-
-        {% endfor %}
+                
+                {% endfor %}
     </div>
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     {% comment %} <div class="row md-1">
         {% for i in objs %}
         <div class="card mt-2" style="width: 13rem; background-color: rgb(209, 161, 161);">
@@ -53,7 +53,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{i.title}}</h5>
                     <img src='/media/{{i.channel_logo}}' style="height: 40px; width: 45px; border-radius: 30px;"
-                        class="card-img-top" alt="..."> <span> {{i.channel_name}} </span>
+                    class="card-img-top" alt="..."> <span> {{i.channel_name}} </span>
             </a>
             <br>
             id={{i.video_id}}<br>
@@ -61,20 +61,21 @@
         </div>
     </div>
     {% endfor %}
-    </div> {% endcomment %}
-    <!-- Optional JavaScript; choose one of the two! -->
+</div> {% endcomment %}
+<!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-</body>
-{% endblock body %}
-
-</html>
+        
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <!--
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        -->
+    </body>
+    
+    {% endblock body %}
+    
+    </html>
