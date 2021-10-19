@@ -104,14 +104,14 @@
                 <hr>
                 <br>
                 <!-- <div class="row" style="background-color: blue;"> -->
-                <img class=" my-3" style="border-radius: 50%; height: 70px ; width: 100px;"
+                <img class=" my-3" onclick="document.location='/channel/{{watch_video.channel_name}}'" style=" cursor: pointer; border-radius: 50%; height: 70px ; width: 100px;"
                     src='/media/{{watch_video.thumbnail}}' alt="no img">
                 <form style="display: contents;" action="#" id="subscribers">
-                    <span id="span" style="margin-top: 25px;height: 70px;width: auto;">
-                        {{watch_video.channel_name}}
+                    <span id="span" onclick="document.location='/channel/{{watch_video.channel_name}}'" style="cursor: pointer; margin-top: 25px;height: 70px;width: auto;">
+                        {{watch_video.channel_name}}</span>
                         <br>
-                        {{watch_video.subscribers}} <h6 style="font-size:smaller;display: inline-block; "> subscribers
-                        </h6>
+                        <span style="font-size:smaller;display: inline-block; margin-top: 1.5cm;margin-left: -3.7cm; ">{{watch_video.subscribers}} subscribers
+                        </span>
                     </span>
                 </form>
                 <!-- </div> -->

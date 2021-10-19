@@ -1,0 +1,46 @@
+{% extends 'basic.html' %}
+{% block title %} <title> {{c_name}} </title> {% endblock title %}
+
+{% block body %}
+
+<body>
+    {% load humanize %}
+    {% for i in channel %}
+    <div style="width: 1200px; margin: auto;cursor: pointer;" onclick="document.location='/watch/{{i.video_id}}'"
+        class="container row mt-4">
+        <div class="col-4" style="background-color:black;">
+            <img style="margin-left: -15px; height: 185px ; width: 382px;" src="/media/{{i.thumbnail}}"
+                class="card-img-top" alt="...">
+        </div>
+        <div class="col-8" style="background-color:black;color: white;">
+            <span style="overflow: hidden; text-overflow:
+                ellipsis;" label="abcdd" title="abcdefg">{{i.title|truncatechars:60}}</span>
+            <br>
+            <br>
+            <span style="overflow: hidden; text-overflow: ellipsis;color:grey">{{i.views}} views -
+                {{i.posted|naturaltime}}</span>
+            <br>
+            <br>
+            <span style="overflow: hidden; text-overflow: ellipsis;color:grey ">{{i.channel_name}}</span>
+        </div>
+
+    </div>
+
+
+
+    {% comment %} <div class="card" style="width: 18rem;">
+        <a href="watch/{{i.video_id}}">
+            <img src='/media/{{i.thumbnail}}' class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="row">{{i.title}}</p>
+                <img src='/media/{{i.channel_logo}}' style="height: 40px; width: 40px;" class="card-img-top" alt="...">
+        </a>
+        <p class="card-text row">{{i.channel_name}}</p>
+        id={{i.video_id}}<br>
+        views {{i.views}}
+    </div>
+    {% endfor %} {% endcomment %}
+    {% endfor %}
+</body>
+
+{% endblock body %}

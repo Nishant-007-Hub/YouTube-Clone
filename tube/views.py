@@ -50,6 +50,11 @@ def watch(request, myid):
     return render(request, "watch.html", {"watch_video":watch_video, "allvideo":allvideo_list, "comments":comments, "allcomments":allcomments})
 
 
+def channel(request, c_name):
+    channel = showVideos.objects.filter(channel_name=c_name)
+    return render(request, "channel.html", {"channel":channel, "c_name":c_name})
+
+
 def subscribe(request):
     videoid = request.GET.get("videoid")
     print(videoid, "videoid")

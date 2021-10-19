@@ -11,5 +11,6 @@ urlpatterns = [
     path('signin', views.signin, name="signin"),
     path('postComment', views.postComment, name="postComment"),
     path('subscribe', views.subscribe, name="subscribe"),
+    path('channel/<str:c_name>', views.channel, name="channel"),
 
 ]
