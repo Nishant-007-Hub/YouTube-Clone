@@ -18,9 +18,9 @@
     {% load static %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <img src="{% static 'Mytube-icon.webp' %}" onclick="document.location='/'" alt="" height="50" width="60"
+            <img src="{% static 'Mytube-icon.webp' %}" onclick="document.location='{% url 'tube:home' %}'"  alt="" height="50" width="60"
                 srcset="">
-            <a class="navbar-brand mx-2" href="/">MyTube</a>
+            <a class="navbar-brand mx-2" href="{% url 'tube:home' %}">MyTube</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
