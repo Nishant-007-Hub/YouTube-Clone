@@ -4,7 +4,7 @@
 {% block body %}
 <body>
 {% if allresults|length == 0 %}
-<h4>Your search query "{{query}}"" does not match any document try with diferent words</h4>
+<h4 style="color: white;">Your search query "{{query}}"" does not match any document try with diferent words</h4>
 {% else %}
 {% for i in allresults  %}
 <div class="card" style="width: 18rem;">

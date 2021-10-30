@@ -7,6 +7,18 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import AnonymousUser, User
 from django.contrib import messages
 from datetime import datetime
+from rest_framework import serializers, viewsets
+from .serializers import showVideosSerializer, CommentSerializer
+
+
+class showVideoViewset(viewsets.ModelViewSet):
+    queryset = showVideos.objects.all()
+    serializer_class = showVideosSerializer
+
+class CommentViewset(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
 
 def home(request):
     objs = showVideos.objects.all()
