@@ -4,6 +4,8 @@ from django.db.models.fields import DateTimeField
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 from django.core.validators import MinLengthValidator
+from django.db.models.signals import post_save, pre_save
+from django.dispatch import receiver
 
 
 class showVideos(models.Model):
@@ -22,6 +24,19 @@ class showVideos(models.Model):
 
     def __str__(self):
         return self.title + " " + "|" + " " + self.channel_name
+
+@receiver(post_save, sender=showVideos)
+def _post_save_receiver(sender,instance, **kwargs):
+    if len(instance.title) > 0:
+        print("good len")
+    print("post save signal")
+
+@receiver(pre_save, sender=showVideos)
+def _pre_save_receiver(instance, **kwargs):
+    if instance.channel_name == "bollywood songs":
+        print("u are going to add video in bollywood songs")
+    print("presave signal")
+
 
 class Comment(models.Model):
     comment_id = models.AutoField(primary_key=True)

@@ -55,7 +55,9 @@ def watch(request, myid):
     # print(watch_video.views, "views")
     allcomments = Comment.objects.all()
     watch_video.views += 1
+    print("just before save")
     watch_video.save()
+    print("just after save")
     allvideo = showVideos.objects.exclude(video_id = myid)
     allvideo_list = list(allvideo)
     shuffle(allvideo_list)
